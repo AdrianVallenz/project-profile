@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+    <div id="bg-canvas"></div>
+
+    <div class="slide">
+        <!-- HUD Decorations -->
+        <div class="hud-ring"></div>
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
+        <div class="tech-line tech-line-h"></div>
+        <div class="tech-line tech-line-v"></div>
+
+        <!-- Split Layout -->
+        <div class="slide-content">
+            <!-- Left Side: Identity -->
+            <div class="slide-left">
+                <div class="profile-img"
+                    style="background-image: url('https://ui-avatars.com/api/?name=Valen&background=0a192f&color=64ffda&size=200');">
+                </div>
+                <div class="intro-text">
+                    <h1 data-text="VALEN">Valen</h1>
+                    <h2>Desainer Grafis</h2>
+                </div>
+            </div>
+
+            <!-- Right Side: Information -->
+            <div class="slide-right">
+                <h3 class="section-title">01. About Me</h3>
+                <p class="bio-text">
+                    Halo! Saya profesional yang berdedikasi dalam menciptakan desain visual yang menarik dan fungsional.
+                    Menggabungkan estetika modern dengan struktur yang jelas untuk menyampaikan pesan secara efektif.
+                </p>
+                <p class="bio-text">
+                    Spesialisasi: UI Design, Web Layouts, branding visual.
+                </p>
+
+                <a href="links.html" class="btn-nav">
+                    Diskusi Lebih Lanjut <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Slide Counter -->
+        <div class="slide-counter">01 / 02</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="matrix.js"></script>
+    <!-- Module Script for Background (Three.js + PostProcessing) -->
+    <script type="module" src="background.js"></script>
+</body>
+
+</html>

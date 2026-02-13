@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+    <div id="bg-canvas"></div>
+
+    <div class="slide">
+        <!-- HUD Decorations -->
+        <div class="hud-ring" style="left: 50%;"></div> <!-- Center ring for this page -->
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
+
+        <div class="slide-content">
+            <!-- Left Side: Title -->
+            <div class="slide-left">
+                <div class="intro-text">
+                    <h1 data-text="KONTAK">Kontak</h1>
+                    <h2>Hubungi Saya</h2>
+                </div>
+                <div style="margin-top: 30px; font-size: 3rem; color: var(--text-secondary);">
+                    <i class="fas fa-address-card"></i>
+                </div>
+            </div>
+
+            <!-- Right Side: Links Grid -->
+            <div class="slide-right">
+                <h3 class="section-title">02. Stay Connected</h3>
+
+                <div class="links-grid">
+                    <a href="https://instagram.com" target="_blank" class="link-card">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="link-card">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="link-card">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:email@example.com" class="link-card">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Saya</span>
+                    </a>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <a href="index.html" class="btn-nav">
+                        <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Kembali
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide Counter -->
+        <div class="slide-counter">02 / 02</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="matrix.js"></script>
+    <!-- Scripts -->
+    <script src="matrix.js"></script>
+
+    <!-- Module Script for Background (Three.js + PostProcessing) -->
+    <script type="module" src="background.js"></script>
+</body>
+
+</html>

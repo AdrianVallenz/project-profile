@@ -1,0 +1,442 @@
+/* Blue Presentation Theme with Hyper-Immersive Effects */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #020c1b;
+    --slide-bg: rgba(10, 25, 47, 0.65);
+    /* More transparent for HUD feel */
+    --text-main: #ccd6f6;
+    --text-highlight: #64ffda;
+    --text-secondary: #8892b0;
+    --accent: #64ffda;
+    --border-color: rgba(100, 255, 218, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    overflow: hidden;
+    perspective: 1500px;
+    /* Essential for 3D Tilt */
+}
+
+#bg-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+/* Slide Container (Holographic Card with HUD) */
+.slide {
+    background: rgba(10, 25, 47, 0.75);
+    width: 85%;
+    max-width: 900px;
+    height: auto;
+    min-height: 500px;
+    aspect-ratio: 16/9;
+
+    /* HUD / Glass Style with Tech Border */
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    box-shadow: 0 0 40px rgba(100, 255, 218, 0.15), inset 0 0 30px rgba(100, 255, 218, 0.05);
+    backdrop-filter: blur(12px);
+
+    border-radius: 4px;
+    /* Sharper corners for tech look */
+    padding: 0;
+
+    display: flex;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+
+    /* Clip path for tech shape (cut corners) */
+    clip-path: polygon(20px 0, 100% 0,
+            100% calc(100% - 20px), calc(100% - 20px) 100%,
+            0 100%, 0 20px);
+}
+
+/* --- HUD DECORATIONS --- */
+
+/* Rotating Arc Reactor Ring */
+.hud-ring {
+    position: absolute;
+    top: 50%;
+    left: 17.5%;
+    /* Center of left panel roughly */
+    width: 300px;
+    height: 300px;
+    border: 1px dashed rgba(100, 255, 218, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: rotate-slow 20s linear infinite;
+}
+
+.hud-ring::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid rgba(100, 255, 218, 0.3);
+    border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+    border-radius: 50%;
+    animation: rotate-fast 10s linear infinite reverse;
+}
+
+/* Corner Brackets */
+.hud-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.top-left {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.top-right {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bottom-left {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Tech Lines */
+.tech-line {
+    position: absolute;
+    background: var(--accent);
+    opacity: 0.3;
+}
+
+.tech-line-h {
+    width: 100%;
+    height: 1px;
+    top: 15%;
+    left: 0;
+}
+
+.tech-line-v {
+    height: 100%;
+    width: 1px;
+    top: 0;
+    left: 35%;
+}
+
+@keyframes rotate-slow {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotate-fast {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Glitch Effect for Title */
+.intro-text h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-highlight);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    text-shadow: 2px 2px 0px #0a192f;
+}
+
+.intro-text h1:hover {
+    animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+        text-shadow: 2px 2px 0px #0a192f;
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+        text-shadow: -2px -2px 0px #ff00ff;
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+        text-shadow: 2px -2px 0px #00ffff;
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+        text-shadow: -2px 2px 0px #ff00ff;
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px 2px 0px #00ffff;
+    }
+
+    100% {
+        transform: translate(0);
+        text-shadow: 2px 2px 0px #0a192f;
+    }
+}
+
+.intro-text h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Glowing Profile Image */
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background-color: #112240;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.5);
+    /* Stronger glow */
+    transition: all 0.3s ease;
+}
+
+.profile-img:hover {
+    box-shadow: 0 0 50px rgba(100, 255, 218, 0.8), 0 0 10px #ffffff;
+    transform: scale(1.05);
+}
+
+/* Layout Columns */
+.slide-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-left {
+    width: 35%;
+    background: rgba(2, 12, 27, 0.7);
+    border-right: 1px solid rgba(100, 255, 218, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.slide-right {
+    width: 65%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* Section Titles with Tech Decor */
+.section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    color: var(--text-highlight);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title::before {
+    content: ">> ";
+    margin-right: 10px;
+    color: var(--accent);
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    margin-bottom: 40px;
+}
+
+.btn-nav {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--accent);
+    background: rgba(100, 255, 218, 0.05);
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn-nav:hover::before {
+    left: 100%;
+}
+
+.btn-nav:hover {
+    background: rgba(100, 255, 218, 0.15);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+    text-shadow: 0 0 8px rgba(100, 255, 218, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Links Grid */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: rgba(17, 34, 64, 0.8);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    background: rgba(17, 34, 64, 1);
+    box-shadow: 0 5px 15px rgba(2, 12, 27, 0.7);
+}
+
+.link-card i {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-right: 15px;
+    transition: transform 0.3s;
+}
+
+.link-card:hover i {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px var(--accent);
+}
+
+/* Slide Counter */
+.slide-counter {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 3rem;
+    /* Huge numbers */
+    font-family: 'Rajdhani', sans-serif;
+    color: rgba(255, 255, 255, 0.05);
+    /* Very subtle watermark style */
+    font-weight: 700;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        aspect-ratio: auto;
+        width: 95%;
+    }
+
+    .slide-content {
+        flex-direction: column;
+    }
+
+    .slide-left,
+    .slide-right {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .slide-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .slide-counter {
+        display: none;
+    }
+}
